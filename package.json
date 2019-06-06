@@ -1,0 +1,164 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "beer suggestion",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "MakeSuggestion",
+                    "slots": [
+                        {
+                            "name": "state",
+                            "type": "state"
+                        }
+                    ],
+                    "samples": [
+                        "to suggest a beer from {state}",
+                        "{state}",
+                        "from {state}",
+                        "suggest a beer from {state}"
+                    ]
+                },
+                {
+                    "name": "MakeRecommendation",
+                    "slots": [
+                        {
+                            "name": "category",
+                            "type": "category"
+                        },
+                        {
+                            "name": "state",
+                            "type": "state"
+                        }
+                    ],
+                    "samples": [
+                        "to suggest a {category} in {state}",
+                        "suggest a {category} in {state}",
+                        "suggest a {category}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "state",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "andhra pradesh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "west bengal"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "himachal pradesh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "uttarakhand"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "jharkhand"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bihar"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "chhattisgarh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "haryana"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "uttar pradesh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gujarat"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "rajasthan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "maharashtra"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Madhya Pradesh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Karnataka"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delhi"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Goa"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "category",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "light beer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dark beer"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
