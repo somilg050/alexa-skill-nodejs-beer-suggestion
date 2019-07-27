@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "beer suggestion",
+            "invocationName": "beer buddy",
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",
@@ -32,6 +32,23 @@
                         }
                     ],
                     "samples": [
+                        "anything in {state}",
+                        "most famous beer in {state}",
+                        "best beer in {state}",
+                        "best drink in {state}",
+                        "famous beer in {state}",
+                        "top beer in {state}",
+                        "please suggest something from {state}",
+                        "would like a suggestion from {state}",
+                        "most famous beer from {state}",
+                        "top beer from {state}",
+                        "beer from {state}",
+                        "help me in selecting beer from {state}",
+                        "most popular beer from {state}",
+                        "best beer from {state}",
+                        "anything from {state}",
+                        "what should i drink in {state}",
+                        "suggest something from {state}",
                         "to suggest a beer from {state}",
                         "{state}",
                         "from {state}",
@@ -39,22 +56,27 @@
                     ]
                 },
                 {
-                    "name": "MakeRecommendation",
-                    "slots": [
-                        {
-                            "name": "category",
-                            "type": "category"
-                        },
-                        {
-                            "name": "state",
-                            "type": "state"
-                        }
-                    ],
+                    "name": "AMAZON.RepeatIntent",
                     "samples": [
-                        "to suggest a {category} in {state}",
-                        "suggest a {category} in {state}",
-                        "suggest a {category}"
+                        "please repeat the last one",
+                        "sorry i missed that one",
+                        "sorry i can't hear you",
+                        "please repeat that",
+                        "repeat please",
+                        "can you repeat that",
+                        "can you please repeat that",
+                        "repeat that",
+                        "repeat again",
+                        "sorry i missed that"
                     ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
                 }
             ],
             "types": [
@@ -63,97 +85,258 @@
                     "values": [
                         {
                             "name": {
-                                "value": "andhra pradesh"
+                                "value": "Wyoming"
                             }
                         },
                         {
                             "name": {
-                                "value": "west bengal"
+                                "value": "Wisconsin"
                             }
                         },
                         {
                             "name": {
-                                "value": "himachal pradesh"
+                                "value": "West Virginia"
                             }
                         },
                         {
                             "name": {
-                                "value": "uttarakhand"
+                                "value": "Virginia"
                             }
                         },
                         {
                             "name": {
-                                "value": "jharkhand"
+                                "value": "Vermont"
                             }
                         },
                         {
                             "name": {
-                                "value": "bihar"
+                                "value": "Utah"
                             }
                         },
                         {
                             "name": {
-                                "value": "chhattisgarh"
+                                "value": "Texas"
                             }
                         },
                         {
                             "name": {
-                                "value": "haryana"
+                                "value": "Tennessee"
                             }
                         },
                         {
                             "name": {
-                                "value": "uttar pradesh"
+                                "value": "South Dakota"
                             }
                         },
                         {
                             "name": {
-                                "value": "gujarat"
+                                "value": "South Carolina"
                             }
                         },
                         {
                             "name": {
-                                "value": "rajasthan"
+                                "value": "Rhode Island"
                             }
                         },
                         {
                             "name": {
-                                "value": "maharashtra"
+                                "value": "Pennsylvania"
                             }
                         },
                         {
                             "name": {
-                                "value": "Madhya Pradesh"
+                                "value": "Oregon"
                             }
                         },
                         {
                             "name": {
-                                "value": "Karnataka"
+                                "value": "Oklahoma"
                             }
                         },
                         {
                             "name": {
-                                "value": "Delhi"
+                                "value": "Ohio"
                             }
                         },
                         {
                             "name": {
-                                "value": "Goa"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "category",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "light beer"
+                                "value": "North Dakota"
                             }
                         },
                         {
                             "name": {
-                                "value": "dark beer"
+                                "value": "North Carolina"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "New York"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "New Mexico"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "New Jersey"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "New Hampshire"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Nevada"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Nebraska"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Monatana"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Missouri"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Mississippi"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Minnesota"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Michigan"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Massachusetts"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Maryland"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Maine"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Louisiana"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kentucky"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kansas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Iowa"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Indiana"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Illinois"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Idaho"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Hawaii"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Georgia"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Florida"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Washington",
+                                "synonyms": [
+                                    "washington d.c",
+                                    "dc",
+                                    "washington dc",
+                                    "washington state"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delaware"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Connecticut"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Colorado"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "California"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Arkansas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Arizona"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Alaska"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Alabama"
                             }
                         }
                     ]
