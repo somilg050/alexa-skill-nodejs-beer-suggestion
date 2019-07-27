@@ -11,19 +11,204 @@ const STOP_MESSAGE = 'Goodbye!';
 
 const skillData = [
   {
-    state:"GOA",
-    category:"DARK BEER",
-    recomendation:"You can try Budweiser Magnum. It's really good!!"
+      name: "Wyoming",
+      ans: "Rainier"
   },
   {
-    state:"MAHARASHTRA",
-    category:"LIGHT BEER",
-    recomendation:"Definately go for heineken"
+      name: "Wisconsin",
+      ans: "Blue Moon"
   },
   {
-    state:"KARNATAKA",
-    category:"LIGHT BEER",
-    recomendation:"can try corona"
+      name: "West Virginia",
+      ans: "Hamms"
+  },
+  {
+      name: "Virginia",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Vermont",
+      ans: "Gose Beer"
+  },
+  {
+      name: "Utah",
+      ans: "Homemade Root Beer"
+  },
+  {
+      name: "Texas",
+      ans: "Lone Star"
+  },
+  {
+      name: "Tennessee",
+      ans: "Tailgate"
+  },
+  {
+      name: "South Dakota",
+      ans: "India Pale Ales"
+  },
+  {
+      name: "South Carolina",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Rhode Island",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Pennsylvania",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Oregon",
+      ans: "Buoy"
+  },
+  {
+      name: "Oklahoma",
+      ans: "Corona"
+  },
+  {
+      name: "Ohio",
+      ans: "Blue Moon"
+  },
+  {
+      name: "North Dakota",
+      ans: "Spotted Cow"
+  },
+  {
+      name: "North Carolina",
+      ans: "Burial"
+  },
+  {
+      name: "New York",
+      ans: "Randolph"
+  },
+  {
+      name:"New Mexico",
+      ans: "India Pale Ales"
+  },
+  {
+      name: "New Jersey",
+      ans: "Blue Moon"
+  },
+  {
+      name: "New Hampshire",
+      ans: "Schilling"
+  },
+  {
+      name: "Nevada",
+      ans: "Firestone Walker 805"
+  },
+  {
+      name: "Nebraska",
+      ans: "Yuengling's Black and Tan"
+  },
+  {
+      name: "Monatana",
+      ans: "Rainier"
+  },
+  {
+      name: "Missouri",
+      ans: "Yoengling"
+  },
+  {
+      name: "Mississippi",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Minnesota",
+      ans: "Hamms"
+  },
+  {
+      name: "Michigan",
+      ans: "India Pale Ale M 43"
+  },
+  {
+      name: "Massachusetts",
+      ans: "Cape Cod"
+  },
+  {
+      name: "Maryland",
+      ans: "Attaboy"
+  },
+  {
+      name: "Maine",
+      ans: "Bear Bones"
+  },
+  {
+      name: "Louisiana",
+      ans: "Bayou"
+  },
+  {
+      name: "Kentucky",
+      ans: "Yuengling"
+  },
+  {
+      name: "Kansas",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Iowa",
+      ans: "Yuengling"
+  },
+  {
+      name: "Indiana",
+      ans: "Yuengling"
+  },
+  {
+      name: "Illinois",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Idaho",
+      ans: "Gluten Free"
+  },
+  {
+      name: "Hawaii",
+      ans: "Aloha"
+  },
+  {
+      name: "Georgia",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Florida",
+      ans: "Jai Alai"
+  },
+  {
+      name:"Washington",
+      ans: "Dacha Garden Beer"
+  },
+  {
+      name: "Delaware",
+      ans: "Dewey"
+  },
+  {
+      name: "Connecticut",
+      ans: "Blue Moon"
+  },
+  {
+      name: "Colorado",
+      ans: "Boulder"
+  },
+  {
+      name: "California",
+      ans: "Firestone Walker 805"
+  },
+  {
+      name: "Arkansas",
+      ans: "Rainier"
+  },
+  {
+      name:"Arizona",
+      ans: "Firestone Walker 805 Blonde Ale"
+  },
+  {
+      name: "Alaska",
+      ans: "Irish Death"
+  },
+  {
+      name: "Alabama",
+      ans: "Blue Moon"
   }
 ];
 
@@ -32,46 +217,19 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    // Our skill will receive a LaunchRequest when the user invokes the skill
-    // with the  invocation name, but does not provide any utterance
-    // mapping to an intent.
-    // For Example, "Open beer suggestion"
-    const speakOutput = 'I can suggest a local beer from any state in the india. What state would you like a suggestion for?';
 
-    // The response builder contains is an object that handles generating the
-    // JSON response that your skill returns.
+    // For Example, "Open beer buddy"
+    const speakOutput = `Hello friend, I am your beer buddy, I can suggest you a most popular beer in any state in USA.
+    What state would you like a suggestion for?`;
+    const speakReprompt = `You can say something like: suggest a beer from Alaska.`;
+    
     return handlerInput.responseBuilder
       .speak(speakOutput)// The text passed to speak, is what Alexa will say.
-      .reprompt(speakOutput)
+      .reprompt(speakReprompt)
       .getResponse();
   },
 };
 
-const MakeRecommendation = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return (request.type === 'IntentRequest'
-        && request.intent.name === 'MakeRecommendation');
-  },
-  handle(handlerInput) {
-    var speechOutput;
-    const undefinedPrompt = "Sorry, I dont have recommendation for that. Try again by saying the name of a state.";
-    
-    // get the value of the category slot
-    const request = handlerInput.requestEnvelope.request;
-    var categorySlot = request.intent.slots.category.value;
-    
-    if(getRecommendation(skillData, 'category', categorySlot) === undefined){
-      speechOutput = undefinedPrompt;
-    }
-    else
-      speechOutput = getRecommendation(skillData, 'category', categorySlot).recomendation;
-    return handlerInput.responseBuilder
-      .speak(speechOutput)
-      .reprompt(speechOutput)
-      .getResponse();
-  },
-};
 
 const LocalSuggestion = {
   canHandle(handlerInput) {
@@ -81,32 +239,54 @@ const LocalSuggestion = {
   },
   handle(handlerInput) {
     var speechOutput;
-    const undefinedPrompt = "Sorry, I dont have recommendation for that. I can recommend a: light beer, or a: dark beer. Which would you prefer?";
-
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    const undefinedPrompt = "Sorry, I don't understand what you just said. Try again by saying the name of a state.";
+    var speechPrompt = `You can ask again for beer suggestion or you can just say exit.`;
+    
     // get the value of the state slot
     const request = handlerInput.requestEnvelope.request;
     var stateSlot = request.intent.slots.state.value;
     
-    if(getRecommendation(skillData, 'state', stateSlot) === undefined){
+    if(getRecommendation(skillData, stateSlot) === undefined){
       speechOutput = undefinedPrompt;
     }
-    else
-      speechOutput = getRecommendation(skillData, 'state', stateSlot).recomendation;
+    else{
+      var result = getRecommendation(skillData, stateSlot).ans;
+      sessionAttributes.result = result;
+      sessionAttributes.stateSlot = stateSlot;
+      handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+      speechOutput = `${result}. Is the most popular beer in ${stateSlot}. ` + `Would you like another beer suggestion?`;
+      
+    }
     return handlerInput.responseBuilder
       .speak(speechOutput)
-      .reprompt(speechOutput)
+      .reprompt(speechPrompt)
       .getResponse();
   },
 };
 
-function getRecommendation(arr, propName, propValue) {
+function getRecommendation(arr, state) {
   for (var i=0; i < arr.length; i++) {
-    if (arr[i][propName] == propValue.toUpperCase()) {
+    if ((arr[i].name).toUpperCase() === state.toUpperCase()) {
       return arr[i];
     }
   }
 }
 
+const RepeatHandler = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest' && (request.intent.name === 'AMAZON.RepeatIntent');
+  },
+  handle(handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    var speechOutput = `${sessionAttributes.result}. Is the most popular beer in ${sessionAttributes.stateSlot}. `
+    + `Would you like another beer suggestion?`;
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
+      .getResponse();
+  },
+};
 
 const HelpHandler = {
   canHandle(handlerInput) {
@@ -148,6 +328,7 @@ const SessionEndedRequestHandler = {
   },
 };
 
+
 const ErrorHandler = {
   canHandle() {
     return true;
@@ -158,6 +339,38 @@ const ErrorHandler = {
     return handlerInput.responseBuilder
       .speak('Sorry, an error occurred.')
       .reprompt('Sorry, an error occurred.')
+      .getResponse();
+  },
+};
+
+const YesIntent = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.YesIntent';
+  },
+  handle(handlerInput) {
+    var speechOutput = `
+  What state would you like a suggestion for?`;
+    var speakReprompt = `You can say something like: suggest a beer from Alaska.`;
+
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
+      .reprompt(speakReprompt)
+      .getResponse();
+  },
+};
+
+const NoIntent = {
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.NoIntent';
+  },
+  handle(handlerInput) {
+    var speechOutput = `Okay then, that's it for today. Goodbye and have a nice day.`;
+
+    return handlerInput.responseBuilder
+      .speak(speechOutput)
+      .withShouldEndSession(true)
       .getResponse();
   },
 };
@@ -175,10 +388,12 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     HelpHandler,
     ExitHandler,
+    RepeatHandler,
+    YesIntent,
+    NoIntent,
     SessionEndedRequestHandler,
     LaunchRequestHandler,
     LocalSuggestion,
-    MakeRecommendation
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();
