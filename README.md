@@ -27,8 +27,6 @@ You can test this skill using an Amazon Echo device or at [Echosim](https://echo
 
 ## Skill setup
 
-# Front End
-
 ### Setting up Your Alexa Skill in the Alexa Developer Console
 Open Your developer account or click on the link given  [Amazon developer console](https://developer.amazon.com/edw/home.html#/skills).
 
@@ -69,4 +67,4 @@ Give the invocation name as `Beer Buddy`. under the invocation headline from the
 3. copy the skill ID and paste it in the trigger section in your AWS Lammbda and paste the ARN copied to the default region just below your skill ID in the endpoint.
 4. Click Save endpoints
 
-## Your Skill is done with the setup part ad is ready to use! You can test it on https://echosim.io 
+### Your Skill is done with the setup part ad is ready to use! You can test it on https://echosim.io 
